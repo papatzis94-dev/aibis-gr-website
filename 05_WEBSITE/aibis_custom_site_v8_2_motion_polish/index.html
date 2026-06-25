@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="el">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="AIBIS — AI Business Intelligence System. Εντοπίζουμε πού χάνει πελάτες μια επιχείρηση online, με AI Business Audit και AI Business Command Center για μηνιαία παρακολούθηση, reports και action plan.">
+    <title>AIBIS — AI Business Intelligence System | AI Business Audit & Command Center</title>
+    <link rel="preload" href="assets/logos/aibis_logo_wide.png" as="image">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="site-loader" data-loader>
+        <div class="loader-frame">
+            <img src="assets/logos/aibis_logo_wide.png" alt="AIBIS" class="loader-logo">
+            <div class="loader-line"><span></span></div>
+            <p>Initializing business intelligence scan</p>
+        </div>
+    </div>
+
+    <canvas class="ambient-canvas" data-ambient-canvas aria-hidden="true"></canvas>
+    <div class="page-noise" aria-hidden="true"></div>
+    <div class="page-glow page-glow-a" aria-hidden="true"></div>
+    <div class="page-glow page-glow-b" aria-hidden="true"></div>
+
+    <header class="topbar" data-topbar>
+        <a class="brand" href="#hero" aria-label="AIBIS αρχική">
+            <span class="brand-mark">
+                <img src="assets/logos/aibis_logo_mark.png" alt="">
+            </span>
+            <span class="brand-word">AIBIS</span>
+        </a>
+        <nav class="nav-links" aria-label="Κύρια πλοήγηση">
+            <a href="#services">Υπηρεσίες</a>
+            <a href="#demo-audit">Demo Audit</a>
+            <a href="#process">Διαδικασία</a>
+            <a href="#command-center">Command Center</a>
+            <a href="#contact">Επικοινωνία</a>
+        </nav>
+        <a class="nav-cta" href="#contact">Ζητήστε AI Audit</a>
+    </header>
+
+    <main>
+        <section id="hero" class="hero section-shell">
+            <div class="hero-bg-grid" aria-hidden="true"></div>
+            <div class="container hero-grid">
+                <div class="hero-copy">
+                    <div class="hero-brand-strip reveal">
+                        <img src="assets/logos/aibis_logo_wide.png" alt="AIBIS — AI Business Intelligence System">
+                        <span></span>
+                    </div>
+                    <p class="eyebrow reveal">AI Business Intelligence System · AI Business Command Center</p>
+                    <h1 class="hero-title reveal">Δείτε πού χάνει πελάτες η επιχείρησή σας — και παρακολουθήστε τη βελτίωση μέσα από ένα AI Business Command Center.</h1>
+                    <p class="hero-text reveal">Η AIBIS αναλύει Google εικόνα, κριτικές, website, social, leads και ροή επικοινωνίας και τα μετατρέπει σε πρακτικό action plan, reports και μηνιαία παρακολούθηση.</p>
+                    <div class="hero-actions reveal">
+                        <a class="btn btn-primary" href="#contact">Ζητήστε AI Business Audit</a>
+                        <a class="btn btn-secondary" href="#command-center">Δείτε το Command Center</a>
+                    </div>
+                    <div class="signal-row reveal" aria-label="Σημεία ελέγχου AIBIS">
+                        <span>Google</span>
+                        <span>Reviews</span>
+                        <span>Website</span>
+                        <span>Leads</span>
+                        <span>AI Action Plan</span>
+                    </div>
+                </div>
+
+                <div class="scanner-wrap reveal">
+                    <div class="scanner-stage" data-scanner>
+                        <div class="scanner-aurora" aria-hidden="true"></div>
+                        <div class="scanner-top">
+                            <div class="scanner-title">
+                                <span class="mini-mark">A</span>
+                                <div>
+                                    <strong>AIBIS Diagnostic Engine</strong>
+                                    <em>Live preview · indicative scan</em>
+                                </div>
+                            </div>
+                            <div class="scan-status"><span></span> scan active</div>
+                        </div>
+
+                        <div class="scanner-layout">
+                            <aside class="profile-panel glass-card">
+                                <p class="panel-kicker">Business profile</p>
+                                <h2>Η επιχείρησή σας</h2>
+                                <p>Προκαταρκτική σάρωση online παρουσίας, αξιοπιστίας και ροής επικοινωνίας.</p>
+                                <div class="score-row">
+                                    <div class="score-ring" data-score="82">
+                                        <svg viewBox="0 0 100 100" aria-label="Business Score 82 στα 100">
+                                            <circle class="score-track" cx="50" cy="50" r="42"></circle>
+                                            <circle class="score-progress" cx="50" cy="50" r="42"></circle>
+                                        </svg>
+                                        <div><strong>82</strong><span>/100</span></div>
+                                    </div>
+                                    <div>
+                                        <span>Business Score</span>
+                                        <strong>Opportunity signal</strong>
+                                        <small>Ενδεικτική εικόνα, όχι τελικό audit.</small>
+                                    </div>
+                                </div>
+                            </aside>
+
+                            <section class="scan-core glass-card">
+                                <div class="core-header">
+                                    <span>AI scan core</span>
+                                    <strong>Analyzing signals</strong>
+                                </div>
+                                <div class="core-stage">
+                                    <div class="scan-beam" aria-hidden="true"></div>
+                                    <div class="scan-line" aria-hidden="true"></div>
+                                    <div class="orbit orbit-a" aria-hidden="true"></div>
+                                    <div class="orbit orbit-b" aria-hidden="true"></div>
+                                    <div class="orbit orbit-c" aria-hidden="true"></div>
+                                    <div class="center-node">
+                                        <span>AI</span>
+                                        <strong>Opportunity Map</strong>
+                                    </div>
+                                    <div class="scan-module module-google" data-module>
+                                        <span></span><strong>Google</strong><em>ορατότητα</em>
+                                    </div>
+                                    <div class="scan-module module-reviews" data-module>
+                                        <span></span><strong>Reviews</strong><em>εμπιστοσύνη</em>
+                                    </div>
+                                    <div class="scan-module module-website" data-module>
+                                        <span></span><strong>Website</strong><em>μετατροπή</em>
+                                    </div>
+                                    <div class="scan-module module-leads" data-module>
+                                        <span></span><strong>Leads</strong><em>ροή</em>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="action-panel glass-card">
+                                <div class="panel-head">
+                                    <span>AI Action Plan</span>
+                                    <strong>Detected Opportunities</strong>
+                                </div>
+                                <div class="opportunity-feed">
+                                    <div class="opportunity-item"><span>01</span><p>Πιο καθαρή online εικόνα</p></div>
+                                    <div class="opportunity-item"><span>02</span><p>Καλύτερη αξιοποίηση κριτικών</p></div>
+                                    <div class="opportunity-item"><span>03</span><p>Πιο άμεση ροή επικοινωνίας</p></div>
+                                    <div class="opportunity-item"><span>04</span><p>Πρακτικές προτεραιότητες βελτίωσης</p></div>
+                                </div>
+                            </section>
+
+                            <section class="progress-panel glass-card">
+                                <div class="panel-head">
+                                    <span>Report progress</span>
+                                    <strong>64%</strong>
+                                </div>
+                                <div class="progress-track"><span></span></div>
+                                <div class="mini-bars" aria-hidden="true">
+                                    <i style="height:42%"></i>
+                                    <i style="height:68%"></i>
+                                    <i style="height:54%"></i>
+                                    <i style="height:78%"></i>
+                                    <i style="height:63%"></i>
+                                    <i style="height:88%"></i>
+                                    <i style="height:71%"></i>
+                                </div>
+                                <div class="signal-grid">
+                                    <span>Social</span>
+                                    <span>Μηνύματα</span>
+                                    <span>CTA</span>
+                                    <span>Report</span>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section problem-section" id="problem">
+            <div class="container split-intro">
+                <div class="section-copy reveal">
+                    <p class="eyebrow">Problem diagnosis</p>
+                    <h2>Οι επιχειρήσεις δεν χάνουν ευκαιρίες μόνο επειδή δεν έχουν “καλό site”.</h2>
+                </div>
+                <p class="section-lead reveal">Συχνά το πρόβλημα βρίσκεται στη συνολική online εικόνα: Google, κριτικές, social, website, μηνύματα, φόρμες και η διαδρομή που ακολουθεί ένας ενδιαφερόμενος πελάτης.</p>
+            </div>
+            <div class="container leak-grid">
+                <article class="leak-card reveal"><span>01</span><h3>Αδύναμη Google εικόνα</h3><p>Η πρώτη εντύπωση μπορεί να μην δείχνει την πραγματική αξία της επιχείρησης.</p></article>
+                <article class="leak-card reveal"><span>02</span><h3>Αναξιοποίητες κριτικές</h3><p>Οι κριτικές υπάρχουν, αλλά δεν δουλεύουν πάντα ως ενεργό στοιχείο εμπιστοσύνης.</p></article>
+                <article class="leak-card reveal"><span>03</span><h3>Website χωρίς καθαρό CTA</h3><p>Ο επισκέπτης δεν οδηγείται άμεσα στο επόμενο πρακτικό βήμα.</p></article>
+                <article class="leak-card reveal"><span>04</span><h3>Social χωρίς διαδρομή πελάτη</h3><p>Το ενδιαφέρον μένει στο feed αντί να μετατρέπεται σε επικοινωνία.</p></article>
+                <article class="leak-card reveal"><span>05</span><h3>Χαμένα μηνύματα / leads</h3><p>Οι ερωτήσεις και τα αιτήματα μπορεί να χάνονται χωρίς απλή καταγραφή.</p></article>
+                <article class="leak-card reveal"><span>06</span><h3>Καμία πρακτική προτεραιότητα</h3><p>Η επιχείρηση δεν ξέρει τι πρέπει να διορθώσει πρώτο.</p></article>
+            </div>
+        </section>
+
+        <section class="section agency-section">
+            <div class="container">
+                <div class="section-heading center reveal">
+                    <p class="eyebrow">AIBIS positioning</p>
+                    <h2>Δεν είμαστε άλλη μία web agency.</h2>
+                    <p>Η AIBIS δεν πουλά απλώς websites ή AI tools. Εντοπίζει πού χάνει πελάτες, χρόνο ή αξιοπιστία μια επιχείρηση online και προτείνει το κατάλληλο ψηφιακό σύστημα.</p>
+                </div>
+                <div class="comparison">
+                    <article class="compare-card muted reveal">
+                        <h3>Κλασική προσέγγιση</h3>
+                        <ul>
+                            <li>Ξεκινά από το design</li>
+                            <li>Παραδίδει μια σελίδα</li>
+                            <li>Δεν εξετάζει όλη την online εικόνα</li>
+                            <li>Δεν δίνει business diagnosis</li>
+                        </ul>
+                    </article>
+                    <article class="compare-card aibis-card reveal">
+                        <div class="compare-badge">AIBIS</div>
+                        <h3>AI Business Intelligence approach</h3>
+                        <ul>
+                            <li>Ξεκινά από διάγνωση</li>
+                            <li>Εξετάζει Google, reviews, website, social και επικοινωνία</li>
+                            <li>Εντοπίζει πιθανές ευκαιρίες</li>
+                            <li>Χτίζει πρακτική λύση</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section analyze-section">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <p class="eyebrow">What AIBIS analyzes</p>
+                    <h2>Ένα scan για όλη την online διαδρομή του πελάτη.</h2>
+                </div>
+                <div class="bento-grid">
+                    <article class="bento-card large reveal"><span>Google</span><h3>Google εικόνα</h3><p>Πώς εμφανίζεται η επιχείρηση όταν κάποιος την αναζητά και αν δημιουργεί εμπιστοσύνη.</p></article>
+                    <article class="bento-card reveal"><span>Reviews</span><h3>Κριτικές</h3><p>Απαντήσεις, τόνος, αξιοποίηση και πιθανές ευκαιρίες εμπιστοσύνης.</p></article>
+                    <article class="bento-card tall reveal"><span>Website</span><h3>Website</h3><p>Δομή, CTA, mobile εμπειρία και καθαρότητα στην επικοινωνία.</p><div class="fake-wave" aria-hidden="true"><i></i><i></i><i></i></div></article>
+                    <article class="bento-card reveal"><span>Social</span><h3>Social παρουσία</h3><p>Αν το προφίλ οδηγεί κάπου ή απλώς δημοσιεύει περιεχόμενο.</p></article>
+                    <article class="bento-card wide reveal"><span>Leads</span><h3>Leads / επικοινωνία</h3><p>Πού χάνεται η ερώτηση, το μήνυμα, η κράτηση ή το ενδιαφέρον.</p></article>
+                    <article class="bento-card reveal"><span>Automation</span><h3>Αυτοματισμοί</h3><p>Πού μπορεί να μειωθεί χειροκίνητη επανάληψη χωρίς να χαθεί ανθρώπινος έλεγχος.</p></article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section services-section" id="services">
+            <div class="container">
+                <div class="section-heading center reveal">
+                    <p class="eyebrow">Πακέτα & Υπηρεσίες</p>
+                    <h2>Από το AI Audit στη μηνιαία παρακολούθηση.</h2>
+                </div>
+                <div class="pricing-grid">
+                    <article class="price-card reveal">
+                        <span class="price-label">Starter AI Audit</span>
+                        <h3>Από 150€</h3>
+                        <ul>
+                            <li>Αρχική διάγνωση online παρουσίας</li>
+                            <li>Google Business Profile check</li>
+                            <li>Ανάλυση κριτικών & κοινωνικής απόδειξης</li>
+                            <li>Έλεγχος website & CTA</li>
+                            <li>Σύντομο report ευκαιριών</li>
+                            <li>Προτάσεις άμεσων διορθώσεων</li>
+                        </ul>
+                    </article>
+                    <article class="price-card featured reveal">
+                        <span class="price-label">Growth Setup</span>
+                        <h3>Από 350€</h3>
+                        <ul>
+                            <li>Πλήρες AI Business Audit</li>
+                            <li>Βελτιστοποίηση Google & reviews</li>
+                            <li>Website / landing page setup</li>
+                            <li>Social profile optimization</li>
+                            <li>Leads & επικοινωνία ροή</li>
+                            <li>Αναλυτικό report & action plan</li>
+                        </ul>
+                    </article>
+                    <article class="price-card reveal">
+                        <span class="price-label">Command Center Monthly</span>
+                        <h3>Κατόπιν επικοινωνίας</h3>
+                        <ul>
+                            <li>Πρόσβαση στο AIBIS Command Center dashboard</li>
+                            <li>Business Score & μετρήσεις online παρουσίας</li>
+                            <li>AI Action Plan με προτεραιότητες</li>
+                            <li>Παρακολούθηση reviews & leads</li>
+                            <li>Μηνιαία reports & αναλύσεις</li>
+                            <li>Συνεχής βελτίωση & υποστήριξη</li>
+                        </ul>
+                    </article>
+                </div>
+                <p class="pricing-note reveal">Οι τιμές είναι ενδεικτικές και προσαρμόζονται ανάλογα με τις ανάγκες και το τελικό scope. Δεν υπάρχει εγγύηση κρατήσεων, εσόδων ή κατάταξης στο Google. Για Custom Business Intelligence System, <a href="#contact">επικοινωνήστε μαζί μας.</a></p>
+            </div>
+        </section>
+
+        <section class="section demo-section" id="demo-audit">
+            <div class="container demo-dossier">
+                <div class="dossier-header reveal">
+                    <div>
+                        <p class="eyebrow">Diagnostic dossier</p>
+                        <h2>Demo Audit: Marina Yacht Club | Mytilene</h2>
+                    </div>
+                    <span class="dossier-badge">Ενδεικτικό demo audit / όχι επίσημη συνεργασία.</span>
+                </div>
+                <div class="dossier-grid">
+                    <article class="dossier-intro glass-card reveal">
+                        <h3>Audit intro</h3>
+                        <p>Το demo δείχνει πώς η AIBIS μπορεί να μετατρέψει μια προκαταρκτική online εικόνα σε πρακτικό report ευκαιριών για premium hospitality χώρο.</p>
+                        <div class="solution-box">
+                            <span>Recommended solution</span>
+                            <strong>Πακέτο Αρχικής Ψηφιακής Ανάπτυξης</strong>
+                        </div>
+                    </article>
+                    <div class="checkpoint-grid">
+                        <span class="checkpoint reveal">Ανεξάρτητη ιστοσελίδα</span>
+                        <span class="checkpoint reveal">Παρουσία στο Google</span>
+                        <span class="checkpoint reveal">Κριτικές / φήμη</span>
+                        <span class="checkpoint reveal">Social media εικόνα</span>
+                        <span class="checkpoint reveal">Μενού / υπηρεσίες</span>
+                        <span class="checkpoint reveal">Κρατήσεις / επικοινωνία</span>
+                        <span class="checkpoint reveal">Αγγλικό περιεχόμενο</span>
+                        <span class="checkpoint reveal">Premium τοποθέτηση / εμπειρία</span>
+                    </div>
+                </div>
+                <div class="opportunity-strip">
+                    <div class="strip-item reveal">Η online παρουσία μπορεί να γίνει πιο καθαρή.</div>
+                    <div class="strip-item reveal">Η εμπειρία / τοποθεσία μπορεί να παρουσιαστεί πιο premium.</div>
+                    <div class="strip-item reveal">Η επικοινωνία και τα αιτήματα ενδιαφέροντος μπορούν να οργανωθούν καλύτερα.</div>
+                    <div class="strip-item reveal">Οι κριτικές, οι φωτογραφίες και η κοινωνική απόδειξη μπορούν να αξιοποιηθούν πιο στρατηγικά.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section process-section" id="process">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <p class="eyebrow">Process</p>
+                    <h2>Πώς λειτουργεί η AIBIS</h2>
+                </div>
+                <div class="process-line">
+                    <article class="process-step reveal"><span>01</span><h3>Διάγνωση & audit online παρουσίας</h3></article>
+                    <article class="process-step reveal"><span>02</span><h3>Ανάλυση ευκαιριών & προτεραιοτήτων</h3></article>
+                    <article class="process-step reveal"><span>03</span><h3>Παρουσίαση αποτελεσμάτων</h3></article>
+                    <article class="process-step reveal"><span>04</span><h3>Σχέδιο δράσης & υλοποίηση</h3></article>
+                    <article class="process-step reveal"><span>05</span><h3>Setup Command Center dashboard</h3></article>
+                    <article class="process-step reveal"><span>06</span><h3>Μηνιαία παρακολούθηση & βελτίωση</h3></article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section command-section" id="command-center">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <p class="eyebrow">AIBIS Business Command Center</p>
+                    <h2>Από το AI Business Audit στο Command Center</h2>
+                    <p>Η διάγνωση δεν μένει σε ένα PDF. Μετατρέπεται σε dashboard, προτεραιότητες, reports και μηνιαία παρακολούθηση.</p>
+                </div>
+                <div class="command-showcase">
+                    <div class="command-visual reveal">
+                        <div class="mockup-browser" data-mockup>
+                            <div class="mockup-bar">
+                                <span class="mockup-dot" style="background:#ff5f56"></span>
+                                <span class="mockup-dot" style="background:#ffbd2e"></span>
+                                <span class="mockup-dot" style="background:#27c93f"></span>
+                                <span class="mockup-url">dashboard / Command Center</span>
+                            </div>
+                            <img src="assets/screenshots/dashboard.png" alt="AIBIS Command Center Dashboard" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="command-features reveal">
+                        <div class="command-feature">
+                            <span></span>
+                            <div>
+                                <strong>Business Score</strong>
+                                <p>Συνολική βαθμολογία online παρουσίας με τάση βελτίωσης.</p>
+                            </div>
+                        </div>
+                        <div class="command-feature">
+                            <span></span>
+                            <div>
+                                <strong>AI Action Plan</strong>
+                                <p>Αυτόματες προτεραιότητες με βάση τα δεδομένα της επιχείρησης.</p>
+                            </div>
+                        </div>
+                        <div class="command-feature">
+                            <span></span>
+                            <div>
+                                <strong>Παρακολούθηση Metrics</strong>
+                                <p>Google, reviews, website, leads, social — όλα σε ένα dashboard.</p>
+                            </div>
+                        </div>
+                        <div class="command-feature">
+                            <span></span>
+                            <div>
+                                <strong>Μηνιαίες Αναφορές</strong>
+                                <p>Reports με πρόοδο, συγκρίσεις και επόμενα βήματα.</p>
+                            </div>
+                        </div>
+                        <div class="command-feature">
+                            <span></span>
+                            <div>
+                                <strong>Tasks & Παρακολούθηση</strong>
+                                <p>Ανάθεση, παρακολούθηση και ολοκλήρωση ενεργειών βελτίωσης.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="command-gallery reveal">
+                    <div class="gallery-item">
+                        <div class="mockup-browser small" data-mockup>
+                            <div class="mockup-bar">
+                                <span class="mockup-dot" style="background:#ff5f56"></span>
+                                <span class="mockup-dot" style="background:#ffbd2e"></span>
+                                <span class="mockup-dot" style="background:#27c93f"></span>
+                            </div>
+                            <img src="assets/screenshots/action-plan.png" alt="AI Action Plan" loading="lazy">
+                        </div>
+                        <div class="gallery-caption">
+                            <strong>AI Action Plan</strong>
+                            <span>Προτεραιότητες & αυτόματες ενέργειες βελτίωσης</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="mockup-browser small" data-mockup>
+                            <div class="mockup-bar">
+                                <span class="mockup-dot" style="background:#ff5f56"></span>
+                                <span class="mockup-dot" style="background:#ffbd2e"></span>
+                                <span class="mockup-dot" style="background:#27c93f"></span>
+                            </div>
+                            <img src="assets/screenshots/reviews.png" alt="Reviews & Leads Monitoring" loading="lazy">
+                        </div>
+                        <div class="gallery-caption">
+                            <strong>Reviews & Leads</strong>
+                            <span>Παρακολούθηση κριτικών και εισερχόμενων αιτημάτων</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="mockup-browser small" data-mockup>
+                            <div class="mockup-bar">
+                                <span class="mockup-dot" style="background:#ff5f56"></span>
+                                <span class="mockup-dot" style="background:#ffbd2e"></span>
+                                <span class="mockup-dot" style="background:#27c93f"></span>
+                            </div>
+                            <img src="assets/screenshots/reports.png" alt="Monthly Reports" loading="lazy">
+                        </div>
+                        <div class="gallery-caption">
+                            <strong>Μηνιαίες Αναφορές</strong>
+                            <span>Reports με πρόοδο, συγκρίσεις και επόμενα βήματα</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="command-cta reveal">
+                    <div class="command-cta-buttons">
+                        <a class="btn btn-primary" href="#contact">Ζητήστε AI Business Audit</a>
+                        <a class="btn btn-secondary" href="#process">Δείτε πώς λειτουργεί το Command Center</a>
+                    </div>
+                    <p class="command-cta-note">Το Command Center είναι διαθέσιμο σε demo / onboarding μορφή μέσω AIBIS Audit.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section contact-section" id="contact">
+            <div class="container contact-panel reveal">
+                <div>
+                    <p class="eyebrow">Contact</p>
+                    <h2>Ζητήστε σύντομο AIBIS Audit για την επιχείρησή σας.</h2>
+                    <p>Μια σύντομη συζήτηση αρκεί για να δούμε αν υπάρχουν πρακτικά σημεία βελτίωσης στην online παρουσία, στην επικοινωνία ή στη μετατροπή ενδιαφέροντος σε πελάτες.</p>
+                </div>
+                <div class="contact-card">
+                    <div><span>Email</span><strong>aibis.greece@gmail.com</strong></div>
+                    <div><span>Phone</span><strong>+30 698 770 4578</strong></div>
+                    <div><span>Location</span><strong>Αθήνα / Ελλάδα</strong></div>
+                    <a class="btn btn-primary" href="mailto:aibis.greece@gmail.com?subject=AIBIS%20Audit%20Request">Ζητήστε AI Business Audit</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <img src="assets/logos/aibis_logo_wide.png" alt="AIBIS" class="footer-logo">
+                <p>AI Business Intelligence System για AI Business Audit, Command Center dashboard και μηνιαία παρακολούθηση online παρουσίας.</p>
+            </div>
+            <div><h3>Υπηρεσίες</h3><a href="#services">Starter AI Audit</a><a href="#services">Growth Setup</a><a href="#services">Command Center Monthly</a></div>
+            <div><h3>Ανακαλύψτε</h3><a href="#demo-audit">Demo Audit</a><a href="#command-center">Command Center</a></div>
+            <div><h3>Επικοινωνία</h3><span>aibis.greece@gmail.com</span><span>+30 698 770 4578</span></div>
+        </div>
+    </footer>
+
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/vendor/ScrollTrigger.min.js"></script>
+    <script src="assets/vendor/lenis.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
