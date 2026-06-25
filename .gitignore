@@ -26,11 +26,11 @@ __pycache__/
 
 # Temp scripts
 _*.mjs
-
-# Temp scripts
-_*.mjs
 _*.py
 _*.ps1
+
+# Vercel deployment artifacts
+.vercel/
 
 # System
 *.swp
