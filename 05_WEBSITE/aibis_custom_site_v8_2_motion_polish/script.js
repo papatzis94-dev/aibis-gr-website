@@ -131,7 +131,7 @@
                 if (!target) return
 
                 event.preventDefault()
-                const offset = window.innerWidth < 760 ? -86 : -112
+                const offset = window.innerWidth < 760 ? -96 : -128
 
                 if (lenis && !prefersReducedMotion) {
                     lenis.scrollTo(target, { offset, duration: 1.05 })

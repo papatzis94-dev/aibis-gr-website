@@ -27,7 +27,7 @@
 html {
     scroll-behavior: smooth;
     background: var(--black);
-    scroll-padding-top: 116px;
+    scroll-padding-top: 130px;
 }
 
 body {
@@ -68,12 +68,12 @@ a {
 .section {
     position: relative;
     padding: 96px 0;
-    scroll-margin-top: 122px;
+    scroll-margin-top: 130px;
 }
 
 .section-shell {
     position: relative;
-    scroll-margin-top: 122px;
+    scroll-margin-top: 130px;
 }
 
 .page-noise,
