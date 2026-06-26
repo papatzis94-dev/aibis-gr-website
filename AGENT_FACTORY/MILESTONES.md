@@ -11,8 +11,8 @@
 | 5 | 12A.5 — Premium Visual QA Pass | **DONE** | PASS — screenshots at 3 viewports, QA report |
 | 6 | **12A.5A — Milestone State Sync + CRM Mobile Overflow Micro-Fix** | **DONE** | PASS — state synced, 375px overflow fixed, 18/18 check script |
 | 7 | 12A.6 — Diagnostic Intake Link | **DONE** | CRM leads prefill Diagnostic Lab via URL param |
-| 8 | **12A.7 — Audit Report Pipeline Link** | **IN_PROGRESS** | CURRENT — diagnostic state links to report preview/export, no publish |
-| 9 | 12A.8 — CRM + Audit Pipeline QA Lock | TODO | Full technical + visual QA, all checks pass, lock doc |
+| 8 | 12A.7 — Audit Report Pipeline Link | **DONE** | Diagnostic state → report preview in admin |
+| 9 | 12A.8 — CRM + Audit Pipeline QA Lock | **DONE** | All checks pass, lock doc created, stopped before 12B |
 
 ## Phase: Supabase Migration (Manual Approval Required)
 

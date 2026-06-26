@@ -1,13 +1,13 @@
 # Current Milestone
 
-## 12A.7 — Audit Report Pipeline Link
+## 12B.1 — Supabase CRM Migration Draft
 
-**Status:** IN_PROGRESS
+**Status:** MANUAL_APPROVAL_REQUIRED
 
-**Purpose:** Connect diagnostic state to report/audit preview/export pipeline without sending/uploading/publishing.
+**⚠️ This milestone cannot be executed without explicit owner approval.**
 
-**Pass Criteria:**
-- Diagnostic results can be viewed as report preview in admin
-- No external send/upload/publish
-- No Supabase writes
-- No real client data
+**Purpose:** Draft SQL migration for CRM tables in Supabase sandbox.
+
+**Required approval phrase:** `APPROVE_12B_SQL_DRAFT_ONLY`
+
+**Stop condition:** Do NOT execute. Do NOT draft SQL until owner provides the approval phrase.
