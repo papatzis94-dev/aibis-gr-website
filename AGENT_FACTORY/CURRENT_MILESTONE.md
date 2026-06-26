@@ -1,13 +1,13 @@
 # Current Milestone
 
-## 12A.6 — Diagnostic Intake Link
+## 12A.7 — Audit Report Pipeline Link
 
-**Status:** TODO
+**Status:** IN_PROGRESS
 
-**Purpose:** Connect CRM candidate to existing diagnostic/audit preparation pipeline using local/manual state only.
+**Purpose:** Connect diagnostic state to report/audit preview/export pipeline without sending/uploading/publishing.
 
 **Pass Criteria:**
-- CRM candidate data prefills Diagnostic Lab inputs
-- No external send/upload
+- Diagnostic results can be viewed as report preview in admin
+- No external send/upload/publish
 - No Supabase writes
 - No real client data
