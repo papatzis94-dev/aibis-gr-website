@@ -2,6 +2,13 @@
 # Usage: .\advance-milestone.ps1
 
 $AgentFactoryPath = "D:\AIBIS\AGENT_FACTORY"
+$RuntimePath = "$AgentFactoryPath\runtime"
+
+# Preflight
+if (-not (Test-Path "$AgentFactoryPath\CURRENT_MILESTONE.md")) {
+    Write-Host "ERROR: CURRENT_MILESTONE.md not found" -ForegroundColor Red
+    exit 1
+}
 
 # Read current milestone
 $currentContent = Get-Content -Path "$AgentFactoryPath\CURRENT_MILESTONE.md" -Raw
@@ -16,7 +23,7 @@ if ($currentContent -match "^##\s+(\S+)") {
 $milestonesContent = Get-Content -Path "$AgentFactoryPath\MILESTONES.md" -Raw
 
 # Mark current as DONE in MILESTONES.md
-$milestonesContent = $milestonesContent -replace "\|\s*\*\*$currentId\*\*.*?\|\s*\*\*TODO\*\*", "| **$currentId** — (see PASS.md) | **DONE**"
+$milestonesContent = $milestonesContent -replace "\|\s*\*\*$currentId\*\*.*?\|\s*\*\*TODO\*\*", "| **$currentId** — (completed) | **DONE**"
 
 # Find next TODO milestone
 $nextMatch = [regex]::Match($milestonesContent, "\|\s*\d+\s*\|\s*\*\*(\S+)\*\*.*?\|\s*\*\*TODO\*\*")
@@ -25,7 +32,6 @@ $nextTitle = ""
 
 if ($nextMatch.Success) {
     $nextId = $nextMatch.Groups[1].Value
-    # Extract title from same line
     $line = $nextMatch.Groups[0].Value
     $titleMatch = [regex]::Match($line, "\*\*$nextId\*\*\s*[—–-]\s*\*\*(.*?)\*\*")
     if ($titleMatch.Success) {
@@ -61,5 +67,16 @@ if ($nextId) {
 }
 
 Set-Content -Path "$AgentFactoryPath\MILESTONES.md" -Value $milestonesContent -Encoding UTF8
+
+# Update runtime STATUS.md
+@"
+# AIBIS Agent Status
+
+## Last Completed
+$currentId
+
+## Current
+$nextId — $nextTitle
+"@ | Set-Content -Path "$RuntimePath\STATUS.md" -Encoding UTF8
 
 Write-Host "Advanced from $currentId to $nextId" -ForegroundColor Cyan

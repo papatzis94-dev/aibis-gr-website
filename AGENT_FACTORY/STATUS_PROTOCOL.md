@@ -1,5 +1,21 @@
 # AIBIS Status Protocol
 
+## Runtime File Locations
+
+| File | Path |
+|---|---|
+| PASS | `AGENT_FACTORY/runtime/PASS.md` — created on milestone pass |
+| FIX_TASK | `AGENT_FACTORY/runtime/FIX_TASK.md` — created on fixable failure |
+| BLOCKED | `AGENT_FACTORY/runtime/BLOCKED.md` — created on blocker |
+| REPORT | `AGENT_FACTORY/runtime/REPORT.md` — created per milestone |
+| STATUS | `AGENT_FACTORY/runtime/STATUS.md` — updated on status change |
+
+Templates (reference only, not authoritative runtime state):
+`AGENT_FACTORY/templates/PASS_TEMPLATE.md` etc.
+
+Root-level `AGENT_FACTORY/PASS.md`, `AGENT_FACTORY/FIX_TASK.md` etc. must NOT exist.
+They are stale artifacts if present at root level.
+
 ## PASS.md Format
 
 ```markdown

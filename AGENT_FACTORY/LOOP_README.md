@@ -74,6 +74,20 @@ This marks the current milestone DONE and sets the next TODO milestone as curren
 2. If PASS but not committed: verify evidence, commit manually, then run `.\advance-milestone.ps1`
 3. If interrupted mid-milestone: re-run `.\run-current-milestone.ps1` to continue
 
+## Runtime File Paths
+
+Status files are always written to and read from `AGENT_FACTORY/runtime/`:
+
+| File | Path | Purpose |
+|---|---|---|
+| `PASS.md` | `runtime/PASS.md` | Milestone passed |
+| `FIX_TASK.md` | `runtime/FIX_TASK.md` | Fixable failure |
+| `BLOCKED.md` | `runtime/BLOCKED.md` | Cannot proceed |
+| `STATUS.md` | `runtime/STATUS.md` | Current agent status |
+
+Templates (reference only, not runtime) are in `AGENT_FACTORY/templates/`.
+Root-level `AGENT_FACTORY/PASS.md` etc. must NOT exist — they are stale artifacts.
+
 ## Safety Notes
 
 - The loop never modifies `.env`, Supabase, production, or real data

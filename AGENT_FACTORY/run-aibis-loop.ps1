@@ -4,12 +4,23 @@
 
 $AibisAppPath = "D:\AIBIS\06_APP\aibis_client_dashboard_mvp"
 $AgentFactoryPath = "D:\AIBIS\AGENT_FACTORY"
+$RuntimePath = "$AgentFactoryPath\runtime"
 $MaxMilestones = 20
 $MaxFixAttempts = 3
 $milestoneCount = 0
 
-# Ensure logs directory exists
+# Ensure directories exist
 New-Item -ItemType Directory -Path "$AgentFactoryPath\logs" -Force | Out-Null
+New-Item -ItemType Directory -Path "$RuntimePath" -Force | Out-Null
+New-Item -ItemType Directory -Path "$AgentFactoryPath\templates" -Force | Out-Null
+
+# Clear stale root-level status files
+$staleRootFiles = @("PASS.md","FIX_TASK.md","BLOCKED.md","REPORT.md","STATUS.md")
+foreach ($f in $staleRootFiles) {
+    if (Test-Path "$AgentFactoryPath\$f") {
+        Move-Item -Path "$AgentFactoryPath\$f" -Destination "$AgentFactoryPath\logs\stale_$f" -Force -ErrorAction SilentlyContinue
+    }
+}
 
 function Write-Log {
     param($Message)
@@ -23,9 +34,37 @@ function Test-ManualApprovalRequired {
     return $content -match "MANUAL_APPROVAL_REQUIRED"
 }
 
+function Write-Blocked {
+    param($Id, $Type, $Why, $Tried, $Decision, $Safety)
+    @"
+# BLOCKED
+
+## Milestone
+$Id
+
+## Blocker Type
+$Type
+
+## Why Blocked
+$Why
+
+## What Was Tried
+$Tried
+
+## Required Human Decision
+$Decision
+
+## Files Touched
+See milestone output.
+
+## Safety Impact
+$Safety
+"@ | Set-Content -Path "$RuntimePath\BLOCKED.md" -Encoding UTF8
+}
+
 Write-Log "=== AIBIS Autonomous Loop Starting ==="
 Write-Log "App Path: $AibisAppPath"
-Write-Log "Agent Factory: $AgentFactoryPath"
+Write-Log "Runtime: $RuntimePath"
 Write-Log "Max Milestones: $MaxMilestones"
 Write-Log "Max Fix Attempts per Milestone: $MaxFixAttempts"
 
@@ -34,6 +73,10 @@ while ($milestoneCount -lt $MaxMilestones) {
     Write-Log "--- Milestone iteration $milestoneCount of $MaxMilestones ---"
 
     # Read current milestone
+    if (-not (Test-Path "$AgentFactoryPath\CURRENT_MILESTONE.md")) {
+        Write-Blocked -Id "unknown" -Type "preflight_failure" -Why "CURRENT_MILESTONE.md not found." -Tried "Read file." -Decision "Restore CURRENT_MILESTONE.md or recreate it." -Safety "Loop cannot determine what to execute."
+        break
+    }
     $currentMilestone = Get-Content -Path "$AgentFactoryPath\CURRENT_MILESTONE.md" -Raw
 
     # Check if current milestone requires manual approval
@@ -45,110 +88,77 @@ while ($milestoneCount -lt $MaxMilestones) {
 
     if ($milestonesContent -match "$currentId.*MANUAL_APPROVAL_REQUIRED") {
         Write-Log "STOP: Milestone $currentId requires MANUAL_APPROVAL_REQUIRED"
-@"
-# BLOCKED
-
-## Milestone
-$currentId
-
-## Blocker Type
-approval_required
-
-## Why Blocked
-This milestone requires manual owner approval before execution.
-
-## What Was Tried
-Loop paused at MANUAL_APPROVAL_REQUIRED milestone.
-
-## Required Human Decision
-Provide one of the approval phrases defined in MILESTONES.md.
-
-## Files Touched
-None
-
-## Safety Impact
-None — loop stopped before executing restricted milestone.
-"@ | Set-Content -Path "$AgentFactoryPath\BLOCKED.md" -Encoding UTF8
+        Write-Blocked -Id $currentId -Type "approval_required" `
+            -Why "This milestone requires manual owner approval before execution." `
+            -Tried "Loop paused at MANUAL_APPROVAL_REQUIRED milestone." `
+            -Decision "Provide one of the approval phrases defined in MILESTONES.md." `
+            -Safety "Loop stopped before executing restricted milestone."
         break
     }
+
+    # Clear runtime status files before each run
+    Remove-Item -Path "$RuntimePath\PASS.md" -ErrorAction SilentlyContinue
+    Remove-Item -Path "$RuntimePath\FIX_TASK.md" -ErrorAction SilentlyContinue
+    Remove-Item -Path "$RuntimePath\BLOCKED.md" -ErrorAction SilentlyContinue
 
     # Run current milestone
     Write-Log "Running: $currentId"
     & "$AgentFactoryPath\run-current-milestone.ps1"
 
-    # Check result
-    if (Test-Path "$AgentFactoryPath\BLOCKED.md") {
+    # Check result from runtime/ directory
+    if (Test-Path "$RuntimePath\BLOCKED.md") {
         Write-Log "BLOCKED — stopping loop"
         break
     }
 
-    if (Test-Path "$AgentFactoryPath\FIX_TASK.md") {
+    if (Test-Path "$RuntimePath\FIX_TASK.md") {
         $fixAttempts = 0
         while ($fixAttempts -lt $MaxFixAttempts) {
             $fixAttempts++
             Write-Log "FIX_TASK attempt $fixAttempts of $MaxFixAttempts"
 
-            # Remove old status files
-            Remove-Item -Path "$AgentFactoryPath\PASS.md" -ErrorAction SilentlyContinue
-            Remove-Item -Path "$AgentFactoryPath\FIX_TASK.md" -ErrorAction SilentlyContinue
-            Remove-Item -Path "$AgentFactoryPath\BLOCKED.md" -ErrorAction SilentlyContinue
+            # Remove old runtime status files
+            Remove-Item -Path "$RuntimePath\PASS.md" -ErrorAction SilentlyContinue
+            Remove-Item -Path "$RuntimePath\FIX_TASK.md" -ErrorAction SilentlyContinue
+            Remove-Item -Path "$RuntimePath\BLOCKED.md" -ErrorAction SilentlyContinue
 
             # Read fix task for context
-            $fixTask = Get-Content -Path "$AgentFactoryPath\FIX_TASK.md" -Raw
+            $fixTask = Get-Content -Path "$RuntimePath\FIX_TASK.md" -Raw
 
             # Run opencode with fix context
-            opencode --prompt "Fix the issues described in $AgentFactoryPath\FIX_TASK.md. Follow AGENT_RULES.md. Write PASS.md, FIX_TASK.md, or BLOCKED.md when done."
+            opencode --prompt "Fix the issues described in $RuntimePath\FIX_TASK.md. Follow AGENT_RULES.md. Write PASS.md, FIX_TASK.md, or BLOCKED.md to $RuntimePath when done."
 
             # Run checks
             Set-Location -Path $AibisAppPath
             $buildResult = & npm run build 2>&1
 
-            if (Test-Path "$AgentFactoryPath\BLOCKED.md") {
+            if (Test-Path "$RuntimePath\BLOCKED.md") {
                 Write-Log "BLOCKED during fix attempt $fixAttempts"
                 break
             }
 
-            if (Test-Path "$AgentFactoryPath\PASS.md") {
+            if (Test-Path "$RuntimePath\PASS.md") {
                 Write-Log "Fix succeeded on attempt $fixAttempts"
                 break
             }
         }
 
-        if (-not (Test-Path "$AgentFactoryPath\PASS.md")) {
+        if (-not (Test-Path "$RuntimePath\PASS.md")) {
             Write-Log "Max fix attempts reached without PASS"
-            if (-not (Test-Path "$AgentFactoryPath\BLOCKED.md")) {
-@"
-# BLOCKED
-
-## Milestone
-$currentId
-
-## Blocker Type
-max_attempts_reached
-
-## Why Blocked
-$MaxFixAttempts fix attempts were made without achieving a PASS status.
-
-## What Was Tried
-$MaxFixAttempts fix attempts via FIX_TASK cycle.
-
-## Required Human Decision
-Review the logs in logs/loop.log and the last FIX_TASK.md. Decide whether to continue with a different approach or skip this milestone.
-
-## Files Touched
-See FIX_TASK.md for details.
-
-## Safety Impact
-App source may have been modified but all changes are reversible via git.
-"@ | Set-Content -Path "$AgentFactoryPath\BLOCKED.md" -Encoding UTF8
+            if (-not (Test-Path "$RuntimePath\BLOCKED.md")) {
+                Write-Blocked -Id $currentId -Type "max_attempts_reached" `
+                    -Why "$MaxFixAttempts fix attempts were made without achieving a PASS status." `
+                    -Tried "$MaxFixAttempts fix attempts via FIX_TASK cycle." `
+                    -Decision "Review logs/loop.log and last FIX_TASK.md. Decide whether to continue with a different approach or skip this milestone." `
+                    -Safety "App source may have been modified but all changes are reversible via git."
             }
             break
         }
     }
 
-    if (Test-Path "$AgentFactoryPath\PASS.md") {
+    if (Test-Path "$RuntimePath\PASS.md") {
         # Verify evidence exists
-        $passContent = Get-Content -Path "$AgentFactoryPath\PASS.md" -Raw
+        $passContent = Get-Content -Path "$RuntimePath\PASS.md" -Raw
         Write-Log "PASS — verifying evidence"
         Write-Log $passContent
 
@@ -160,33 +170,17 @@ App source may have been modified but all changes are reversible via git.
 
         if ($LASTEXITCODE -ne 0) {
             Write-Log "Final build failed after PASS — not advancing"
-@"
-# BLOCKED
-
-## Milestone
-$currentId
-
-## Blocker Type
-build_failure
-
-## Why Blocked
-Final build verification failed after PASS.md was written.
-
-## Required Human Decision
-Review logs/loop.log and fix the build issue before resuming.
-
-## Files Touched
-See PASS.md for details.
-
-## Safety Impact
-Build is broken — app may not compile.
-"@ | Set-Content -Path "$AgentFactoryPath\BLOCKED.md" -Encoding UTF8
+            Write-Blocked -Id $currentId -Type "build_failure" `
+                -Why "Final build verification failed after PASS.md was written." `
+                -Tried "Final build check." `
+                -Decision "Review logs/loop.log and fix the build issue before resuming." `
+                -Safety "Build is broken — app may not compile."
             break
         }
 
         # Archive PASS to logs
         $timestamp = Get-Date -Format "yyyyMMdd-HHmmss"
-        Copy-Item -Path "$AgentFactoryPath\PASS.md" -Destination "$AgentFactoryPath\logs\PASS-$currentId-$timestamp.md"
+        Copy-Item -Path "$RuntimePath\PASS.md" -Destination "$AgentFactoryPath\logs\PASS-$currentId-$timestamp.md"
 
         # Commit
         Write-Log "Committing changes"

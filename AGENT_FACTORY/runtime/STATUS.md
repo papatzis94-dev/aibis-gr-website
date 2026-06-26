@@ -4,19 +4,20 @@
 AIBIS CRM + Diagnostic/Audit Pipeline Phase
 
 ## Current Milestone
-12A.1B — CRM Schema Alignment Review — TODO
+Loop complete — 12A.2 to 12A.5 finished
 
 ## Last Completed
-(none)
+12A.5 — Premium Visual QA Pass
 
 ## Next
-12A.2 — CRM Data Contract
+12A.6 — CRM Local Store + Manual Workflow (recommended)
 
 ## Overall Progress
-0 / 8 milestones complete (core phase)
+4 / 4 milestones complete (12A.2–12A.5 loop)
 
 ## Safety Status
 - Supabase writes: DISABLED
 - Production: UNTOUCHED
 - Real data: NONE
 - Forbidden files: CLEAN
+- App source: 3 files (2 created, 1 modified)
