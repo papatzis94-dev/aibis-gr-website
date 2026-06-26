@@ -10,7 +10,7 @@
 | 4 | 12A.4 — Static CRM UI Prototype | **DONE** | PASS — AdminCrm.tsx, crmMockData.ts, route added |
 | 5 | 12A.5 — Premium Visual QA Pass | **DONE** | PASS — screenshots at 3 viewports, QA report |
 | 6 | **12A.5A — Milestone State Sync + CRM Mobile Overflow Micro-Fix** | **DONE** | PASS — state synced, 375px overflow fixed, 18/18 check script |
-| 7 | **12A.6 — Diagnostic Intake Link** | **IN_PROGRESS** | CURRENT — CRM candidate prefills Diagnostic Lab, no external send |
+| 7 | 12A.6 — Diagnostic Intake Link | **TODO** | CRM candidate prefills Diagnostic Lab, no external send |
 | 8 | 12A.7 — Audit Report Pipeline Link | TODO | Diagnostic state links to report preview/export, no publish |
 | 9 | 12A.8 — CRM + Audit Pipeline QA Lock | TODO | Full technical + visual QA, all checks pass, lock doc |
 

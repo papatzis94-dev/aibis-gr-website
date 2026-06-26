@@ -5,7 +5,7 @@
 $AibisAppPath = "D:\AIBIS\06_APP\aibis_client_dashboard_mvp"
 $AgentFactoryPath = "D:\AIBIS\AGENT_FACTORY"
 $RuntimePath = "$AgentFactoryPath\runtime"
-$MaxMilestones = 20
+$MaxMilestones = 3
 $MaxFixAttempts = 3
 $milestoneCount = 0
 
