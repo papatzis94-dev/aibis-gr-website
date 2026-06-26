@@ -1,17 +1,13 @@
 # Current Milestone
 
-## 12A.1B — CRM Schema Alignment Review
+## 12A.6 — Diagnostic Intake Link
 
 **Status:** TODO
 
-**Purpose:** Review `docs/ADMIN_CRM_SCHEMA_DRAFT_12A1.md` against current app models, types, and table structures. Decide naming strategy and alignment approach before any UI or database work begins.
+**Purpose:** Connect CRM candidate to existing diagnostic/audit preparation pipeline using local/manual state only.
 
 **Pass Criteria:**
-- [ ] Schema document reviewed against existing app types (business, lead, contact, etc.)
-- [ ] Naming alignment decisions documented
-- [ ] No app source modified
-- [ ] No Supabase changes
-- [ ] No env changes
-
-**Check Scripts:**
-- (none — documentation review milestone)
+- CRM candidate data prefills Diagnostic Lab inputs
+- No external send/upload
+- No Supabase writes
+- No real client data
