@@ -1,13 +1,19 @@
 # Current Milestone
 
-## 12B.2 — CRM RLS Plan
+## 12B.3 — Controlled Sandbox Migration Gate
 
 **Status:** MANUAL_APPROVAL_REQUIRED
 
-**⚠️ This milestone cannot be executed without explicit owner approval.**
+**⚠️ This milestone requires explicit owner approval before any database execution.**
 
-**Purpose:** Design RLS policies for all crm.* tables. Documentation and planning only.
+**Purpose:** Apply schema + RLS migration to Supabase sandbox and verify.
 
-**Required approval phrase:** `APPROVE_12B_RLS_SANDBOX_TEST`
+**Required approval phrase:** `APPROVE_12B_SANDBOX_MIGRATION_EXECUTION`
 
-**Stop condition:** Do NOT execute. Do NOT implement RLS until owner provides the approval phrase.
+**Preconditions:**
+- [ ] SQL schema draft reviewed (12B.1)
+- [ ] RLS plan drafted (12B.2)
+- [ ] Migration runbook created (12B.3A)
+- [ ] Verification plan created (12B.3B)
+
+**Stop condition:** Do NOT execute. Do NOT run any Supabase command until the owner provides the approval phrase.
