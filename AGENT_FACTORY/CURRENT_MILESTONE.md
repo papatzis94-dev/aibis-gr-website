@@ -1,13 +1,13 @@
 # Current Milestone
 
-## 12B.1 — Supabase CRM Migration Draft
+## 12B.2 — CRM RLS Plan
 
 **Status:** MANUAL_APPROVAL_REQUIRED
 
 **⚠️ This milestone cannot be executed without explicit owner approval.**
 
-**Purpose:** Draft SQL migration for CRM tables in Supabase sandbox.
+**Purpose:** Design RLS policies for all crm.* tables. Documentation and planning only.
 
-**Required approval phrase:** `APPROVE_12B_SQL_DRAFT_ONLY`
+**Required approval phrase:** `APPROVE_12B_RLS_SANDBOX_TEST`
 
-**Stop condition:** Do NOT execute. Do NOT draft SQL until owner provides the approval phrase.
+**Stop condition:** Do NOT execute. Do NOT implement RLS until owner provides the approval phrase.

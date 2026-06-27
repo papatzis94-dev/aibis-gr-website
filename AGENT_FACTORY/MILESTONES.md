@@ -18,7 +18,7 @@
 
 | # | Milestone | Status | Pass Criteria | Notes |
 |---|---|---|---|---|
-| 10 | 12B.1 — Supabase CRM Migration Draft | MANUAL_APPROVAL_REQUIRED | SQL draft only, no execution, no Supabase writes | Requires: `APPROVE_12B_SQL_DRAFT_ONLY` |
+| 10 | 12B.1 — Supabase CRM Migration Draft | **DONE_DRAFT_ONLY** | Draft SQL files created, 49/49 safety checks. No execution. | Requires: `APPROVE_12B_SANDBOX_MIGRATION` for next step |
 | 11 | 12B.2 — CRM RLS Plan | MANUAL_APPROVAL_REQUIRED | RLS plan document only, no execution | Requires: `APPROVE_12B_RLS_SANDBOX_TEST` |
 | 12 | 12B.3 — Controlled Sandbox Migration Gate | MANUAL_APPROVAL_REQUIRED | Sandbox migration only, requires explicit approval | Requires: `APPROVE_12B_SANDBOX_MIGRATION` |
 
