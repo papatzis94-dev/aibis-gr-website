@@ -359,6 +359,18 @@ a {
     will-change: transform, opacity, filter;
 }
 
+.hero-title .word.second-line {
+    font-style: italic;
+}
+
+.hero-title .aibis-word {
+    font-weight: 700;
+}
+
+.hero-title .ai-cyan {
+    color: var(--cyan);
+}
+
 .hero-text {
     max-width: 620px;
     margin: 20px 0 0;
