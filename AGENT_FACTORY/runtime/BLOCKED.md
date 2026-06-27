@@ -1,34 +1,40 @@
-# 12B.3 — Manual SQL Execution Blocked
+# BLOCKED
+
+## Milestone
+12B.3R — Remote Sandbox SQL Execution Attempt
 
 ## Blocker Type
 manual_execution_required
 
 ## Why Blocked
-SQL execution requires the Supabase Dashboard SQL Editor because Docker is not available on this machine. The `supabase status` CLI command failed (Docker not running). The SQL draft files are prepared and reviewed, but cannot be executed from this environment.
+All available execution methods were attempted. None succeeded due to missing credentials:
+- Supabase CLI available but NOT authenticated (no `SUPABASE_ACCESS_TOKEN`)
+- `pg` module installed but no database password
+- Management API requires personal access token (service role key doesn't work)
 
-## What Was Done
-- Sandbox project ref confirmed: `fzpukpmopxvfekxvcdka` ✓
-- All pre-execution safety checks passed (build, test, safety, drafts) ✓
-- Manual SQL execution guide created with ordered sections ✓
-- Verification queries prepared ✓
-- Rollback scripts ready ✓
+## What Was Tried
+1. Supabase CLI via npx — not authenticated
+2. Database connection pooler (eu-west-1) — password rejected
+3. Management API with service role key — JWT rejected
+4. Direct DB host — DNS not found
 
 ## Required Human Decision
-Execute the SQL manually via Supabase Dashboard:
-1. Open https://supabase.com/dashboard/project/fzpukpmopxvfekxvcdka
-2. Go to SQL Editor
-3. Follow `AGENT_FACTORY/MANUAL_SQL_EXECUTION_REQUIRED_12B3.md`
-4. Run the 6 sections in order
-5. Run the 10 verification queries
-6. Report results
+Generate a Supabase personal access token at:
+https://supabase.com/dashboard/account/tokens
 
-## Files for Execution
-- `docs/sql-drafts/12B1-crm-migration-draft/001_crm_schema_draft.sql`
-- `docs/sql-drafts/12B1-crm-migration-draft/002_crm_indexes_constraints_draft.sql`
-- `docs/sql-drafts/12B1-crm-migration-draft/004_crm_seed_reference_data_draft.sql`
-- `docs/sql-drafts/12B2-crm-rls-plan/001_enable_rls_draft.sql`
-- `docs/sql-drafts/12B2-crm-rls-plan/002_admin_read_policies_draft.sql`
-- `docs/sql-drafts/12B2-crm-rls-plan/003_admin_write_policies_draft.sql`
+Then set:
+```powershell
+$env:SUPABASE_ACCESS_TOKEN = "sbp_your_token_here"
+```
+
+Then re-run this milestone.
+
+Alternatively, provide the database password for direct `pg` connection.
+
+## Files Touched
+- `scripts/crm-sandbox-connect-test.mjs` — created (connection test)
+- `scripts/crm-mgmt-api-test.mjs` — created (API test)
+- `AGENT_FACTORY/SANDBOX_REMOTE_EXECUTION_BLOCKED_12B3R.md` — created
 
 ## Safety Impact
-None. All SQL files are draft-reviewed and execution-ready. Manual execution via SQL Editor is the safest approach given the environment constraint.
+**None.** No SQL was executed. No Supabase connection was established. No credentials were exposed. All changes are local script files and documentation.
