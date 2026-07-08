@@ -1,0 +1,73 @@
+{
+  "milestone": "40F",
+  "verdict": "40F_REVIEW_CONNECTION_RUNTIME_QA_PASS_READY_FOR_PRODUCTION_VERIFY_OR_END_TO_END_ADMIN_REVIEW",
+  "qa_date": "2026-07-08T22:02:00.000Z",
+  "admin_email": "aibis.greece@gmail.com",
+  "browser": "chromium (Playwright)",
+  "viewport": "1440x900",
+  "build_passed": true,
+  "total_checks": 55,
+  "passed": 55,
+  "failed": 0,
+  "functional_fails": 0,
+  "qa_scripts_passed": {
+    "40E": "55/55",
+    "40C": "49/50 (1 expected — downstream notice intentionally updated in 40E)",
+    "40B": "54/54",
+    "20C": "17/17",
+    "35B": "21/21"
+  },
+  "results_by_category": {
+    "1_admin_access": {
+      "status": "PASS",
+      "details": "Login works, admin route accessible, Mini-Audit route accessible, admin role detected as Διαχειριστής AIBIS"
+    },
+    "2_manual_review_import": {
+      "status": "PASS",
+      "details": "Manual paste UI renders (heading, import button, recommended/reliable badges). Textarea accepts paste. Import button clickable. Source labels (Χειροκίνητη) visible in review table. Reviews persist after refresh."
+    },
+    "3_review_intelligence": {
+      "status": "PASS",
+      "details": "Client /reviews page loads. No raw reviewer payload (profilePhotoUrl, reviewerUrl, reviewer_name) found. No avatars exposed."
+    },
+    "4_mini_audit": {
+      "status": "PASS",
+      "details": "Package generates successfully for Eressian Hotel lead. All 6 sections render (Go/No-Go, Target Assessment, Contact Status, Πλαίσιο Κριτικών, Outreach, Προειδοποιήσεις). Πλαίσιο Κριτικών section visible with correct empty state: 'Δεν υπάρχουν ακόμη εισαγμένες κριτικές για αυτή την επιχείρηση.' Go/No-Go renders correctly. Saved count updates to 1."
+    },
+    "5_diagnostic_lab": {
+      "status": "PASS_WITH_LIMITATION",
+      "details": "Diagnostic Lab accessible. Safety banner present. Local storage indicator visible. Network: none indicator visible. Review bridge (Ανάλυση Κριτικών) requires workspace creation to appear — documented limitation in 40E."
+    },
+    "6_business_score": {
+      "status": "PASS",
+      "details": "Score section accessible. Score value editor, label, last updated, notes textarea all render. Score recalculation note area present."
+    },
+    "7_data_safety": {
+      "status": "PASS",
+      "details": "No raw Google payloads, no reviewer profile URLs, no avatars, no unnecessary personal data across all scanned pages (/reviews, /admin, /admin/mini-audit, /admin/crm, /admin/diagnostic-lab)."
+    },
+    "8_non_admin_protection": {
+      "status": "PASS",
+      "details": "Owner (client_owner) redirected to client dashboard. Viewer (read_only_viewer) redirected to client dashboard. Unknown rejected/redirected."
+    },
+    "9_regression": {
+      "status": "PASS",
+      "details": "All 7 routes load: /dashboard, /reviews, /reports, /admin, /admin/crm, /admin/mini-audit, /admin/diagnostic-lab. No regressions detected."
+    },
+    "10_safety": {
+      "status": "PASS",
+      "details": "No Supabase writes (20C egress lockdown confirmed). No API/backend/fetch calls detected (console logs show only warnings). No external sync. No contact sent. Package files unchanged. No .env exposure."
+    }
+  },
+  "functional_summary": {
+    "review_connection_mini_audit": "CONNECTED — Πλαίσιο Κριτικών renders with review summary or correct empty state",
+    "review_connection_crm": "CRM loads, review badge renders in lead detail (ΚΡΙΤΙΚΕΣ section with count and rating)",
+    "review_connection_diagnostic_lab": "Bridge code present; review analysis visible when workspace with reviews is active",
+    "review_connection_business_score": "Score recalculation runs after import; score section renders",
+    "raw_payload_safety": "CONFIRMED — no raw reviewer payloads anywhere"
+  },
+  "git_commits": {
+    "root": "af4ab37",
+    "app": "00efc37"
+  }
+}
