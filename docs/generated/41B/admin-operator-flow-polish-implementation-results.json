@@ -1,0 +1,67 @@
+{
+  "milestone": "41B",
+  "verdict": "41B_ADMIN_OPERATOR_FLOW_POLISH_IMPLEMENTATION_PASS_READY_FOR_OPERATOR_FLOW_RUNTIME_QA",
+
+  "crm_read_only_label_fixed": true,
+  "worker_label_fixed": true,
+  "context_banner_added": true,
+  "context_banner_pages_count": 5,
+  "context_empty_state_visible": true,
+  "cross_page_links_added": true,
+  "cross_page_links_preserve_context": true,
+  "progress_indicator_added": true,
+  "progress_indicator_current_step_visible": true,
+  "reports_draft_label_visible": true,
+  "reports_no_send_publish_label_visible": true,
+  "safety_labels_consistent": true,
+
+  "crm_still_loads": true,
+  "business_profile_still_loads": true,
+  "reviews_still_load": true,
+  "review_intelligence_still_loads": true,
+  "mini_audit_still_generates": true,
+  "mini_audit_review_context_preserved": true,
+  "diagnostic_lab_still_loads": true,
+  "reports_still_load": true,
+  "client_preview_still_loads": true,
+  "admin_access_preserved": true,
+
+  "owner_admin_route_blocked": true,
+  "viewer_admin_route_blocked": true,
+  "unknown_rejected": true,
+
+  "supabase_files_changed": false,
+  "sql_files_changed": false,
+  "package_files_changed": false,
+  "public_site_files_changed": false,
+  "unexpected_fetch_or_api_calls": 0,
+  "external_sync_added": false,
+  "contact_sent": false,
+  "raw_payload_exposed": false,
+
+  "build_passed": true,
+
+  "new_files": [
+    "src/components/admin/AdminBusinessContextBanner.tsx",
+    "src/components/admin/AdminAuditProgress.tsx"
+  ],
+  "modified_files": [
+    "src/components/admin/AdminShell.tsx",
+    "src/pages/admin/AdminCrm.tsx",
+    "src/pages/admin/AdminDashboard.tsx",
+    "src/pages/admin/AdminDiagnosticLab.tsx",
+    "src/components/admin/outreach/MiniAuditPackagePanel.tsx",
+    "src/pages/admin/AdminHtmlReportPreview.tsx"
+  ],
+
+  "notes": [
+    "CRM Read-Only Mode label fixed to 'Τοπική λειτουργία demo' with clearer description",
+    "Reviews Worker label fixed to 'Τοπικός βοηθός συλλογής'",
+    "Context banner implemented in AdminShell, appears on all admin pages",
+    "9 cross-page links added across CRM, Profile, Reviews, Mini-Audit, Diagnostic Lab, Reports",
+    "7-step progress indicator added to AdminShell",
+    "Report preview now shows 'Προσχέδιο αναφοράς' and 'Δεν έχει σταλεί ή δημοσιευθεί'",
+    "All existing flows preserved, build passes",
+    "No Supabase/API/backend/auth/package changes"
+  ]
+}
