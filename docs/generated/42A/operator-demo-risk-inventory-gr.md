@@ -1,0 +1,19 @@
+# 42A — Operator Demo Risk Inventory (GR)
+
+**Μητρώο κινδύνων για επίδειξη σε υποψήφιο πελάτη.**  
+Σοβαρότητα: P0 (blocker), P1 (σημαντικό), P2 (βελτίωση).
+
+| # | Περιοχή | Κίνδυνος | Σοβ. | Το παρατηρεί | Γιατί έχει σημασία | Απόδειξη | Προτεινόμενη Διόρθωση | 42B |
+|---|---------|----------|------|--------------|-------------------|----------|------------------------|-----|
+| R01 | Login | Admin link ορατός σε όλους τους authenticated χρήστες | P0 | Πελάτης | Ο πελάτης βλέπει "Εσωτερική πρόσβαση AIBIS admin" και μπερδεύεται ή προσπαθεί να μπει | Login page after auth: "Εσωτερική πρόσβαση AIBIS admin" link δίπλα στο "Συνέχεια" | Απόκρυψη admin link όταν ο ρόλος δεν είναι aibis_admin | ✅ |
+| R02 | Client Dashboard | Hardcoded `isProspectDemoMode` flag ελέγχει demo/production mode | P0 | Operator | Αν τεθεί `false` κατά λάθος, admin link εμφανίζεται σε client sidebar και (Ενδ.) labels εξαφανίζονται | `src/config/demo/prospectDemoMode.ts:1` — export const isProspectDemoMode = true | Αντικατάσταση με env var ή config object με validation | ✅ |
+| R03 | Client Dashboard | Hardcoded `isDemoPresentation` flag στο AppShell | P0 | Operator | Αν τεθεί `false`, search UI εμφανίζεται σε client topbar με αναφορές σε λειτουργίες που δεν υπάρχουν | `src/components/AppShell.tsx:9` — const isDemoPresentation = true | Μεταφορά σε shared config και documentation | ✅ |
+| R04 | Business Score | Score 86 βασισμένο σε 3 reviews χωρίς ένδειξη data confidence | P0 | Πελάτης | Ο πελάτης μπορεί να πάρει το score στην ονομαστική του αξία χωρίς να γνωρίζει ότι βασίζεται σε ελάχιστα δεδομένα | Dashboard shows Score 86 without "(από 3 κριτικές)" context | Προσθήκη data-confidence indicator: "(από Χ κριτικές)" | ✅ |
+| R05 | Onboarding | "Η ρύθμιση ολοκληρώθηκε" / "Η προετοιμασία ολοκληρώθηκε" υπονοεί ολοκλήρωση integration | P1 | Πελάτης | Υπονοεί ότι η σύνδεση με Google/εξωτερικά συστήματα έχει ολοκληρωθεί, ενώ είναι μόνο local data entry | `SetupProgressCard.tsx:26`, `FinishStep.tsx:14` | Αλλαγή σε "Τα βασικά στοιχεία καταγράφηκαν τοπικά" | ✅ |
+| R06 | Admin CRM | Στάδια "outreach_sent" και "proposal_sent" υπονοούν πραγματική αποστολή | P2 | Operator | Operator μπορεί να μπερδευτεί και να νομίζει ότι έγινε πραγματική ενέργεια | `AdminCrm.tsx:26` — ACTIVE_STAGES | Μετονομασία σε "manual_outreach_logged", "proposal_prepared" | ✅ |
+| R07 | Admin Nav | "Τεχνικά εργαλεία" group με sandbox/technical panels ορατά | P2 | Operator | Operator μπορεί να μπει σε technical panels κατά λάθος κατά τη διάρκεια demo | Admin overview nav group "Τεχνικά εργαλεία" | Operator training — όχι απαραίτητα code change | ❌ |
+| R08 | Business Profile | Profile section αναφέρει internal fields | P1 | Operator | Operator μπορεί να δείξει internal πεδία χωρίς να το καταλάβει | Admin business profile section | 42B review copy για client-facing accuracy | ✅ |
+| R09 | Business Switcher | 3 demo businesses ορατά στο client dashboard | P1 | Πελάτης | Ο πελάτης βλέπει άλλες επιχειρήσεις (Goldy Hair Salon, Studio Mytilene View) και μπερδεύεται | Dashboard business switcher: "Αλλαγή επιχείρησης" | Αποδοχή για controlled demo. 42B: απόκρυψη switcher σε client mode | ✅ |
+| R10 | Mini-Audit | Generated briefing μοιάζει με τελική αναφορά | P1 | Operator | Operator μπορεί να το παρουσιάσει ως τελικό report χωρίς να εξηγήσει ότι είναι draft | MiniAuditPackagePanel.tsx — ολοκληρωμένο output | "Τοπικά — Demo" badge + footer disclaimer ήδη υπάρχουν | ❌ |
+| R11 | Reports | Report preview χωρίς sample data σε admin | P2 | Operator | Empty state μπορεί να φαίνεται ημιτελές | Admin reports — depends on business selection | 42B: demo-safe empty states | ✅ |
+| R12 | Client Reviews | Reviews page with demo data — 3 reviews only | P1 | Πελάτης | Ο πελάτες βλέπει μόνο 3 κριτικές και μπορεί να νομίζει ότι αυτές είναι όλες | Client reviews page — limited demo dataset | 42B: add note "Ενδεικτικές κριτικές παρουσίασης" | ✅ |
