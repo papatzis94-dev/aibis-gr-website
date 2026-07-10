@@ -1,0 +1,18 @@
+{
+  "admin_shell_visible": true,
+  "crm_read_only_label_removed": true,
+  "crm_local_demo_label_visible": true,
+  "context_banner_visible_pages": ["/admin/crm", "/admin", "/admin/mini-audit", "/admin/diagnostic-lab"],
+  "cross_page_links_work": true,
+  "progress_indicator_visible": true,
+  "progress_indicator_steps_count": 7,
+  "mini_audit_generates_package": true,
+  "diagnostic_lab_loads": true,
+  "reports_draft_label_visible": true,
+  "reports_no_send_publish_label_visible": true,
+  "client_preview_loads": true,
+  "admin_controls_not_leaking_to_client": true,
+  "owner_admin_route_blocked": true,
+  "viewer_admin_route_blocked": true,
+  "unknown_rejected": true
+}
